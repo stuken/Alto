@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,6 +26,7 @@ public class Suite {
 	private double duration;
 	
 	private Result result;
+	private Job job;
 	
 	private Set<CaseInfo> cases = new HashSet<CaseInfo>(0);
 	
@@ -93,6 +93,15 @@ public class Suite {
 	
 	public void setResult(Result result) {
 		this.result = result;
+	}
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	public Job getJob() {
+		return job;
+	}
+	
+	public void setJob(Job job) {
+		this.job = job;
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY)

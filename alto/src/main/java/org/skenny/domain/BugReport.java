@@ -1,5 +1,6 @@
 package org.skenny.domain;
 
+import java.net.URL;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,40 +15,57 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Baseline {
-	private long baselineId;
-	private Set<CaseInfo> cases = new HashSet<CaseInfo>(0);
-	private Set<BugReport> bugReports = new HashSet<BugReport>(0);
+public class BugReport {
+	private long bugReportId;
+	private Set<Baseline> baselines = new HashSet<Baseline>(0);
+	private URL bugUrl;
+	private boolean isDev;
+	private boolean isQa;
 	
 	private Date created;
 	private Date updated;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long getBaselineId() {
-		return baselineId;
+	public long getBugReportId() {
+		return bugReportId;
 	}
 	
-	public void setBaselineId(long baselineId) {
-		this.baselineId = baselineId;
-	}
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	public Set<CaseInfo> getCases() {
-		return cases;
-	}
-	
-	public void setCases(Set<CaseInfo> cases) {
-		this.cases = cases;
+	public void setBugReportId(long bugReportId) {
+		this.bugReportId = bugReportId;
 	}
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-	public Set<BugReport> getBugReports() {
-		return bugReports;
+	public Set<Baseline> getBaselines() {
+		return baselines;
 	}
 	
-	public void setBugReports(Set<BugReport> bugReports) {
-		this.bugReports = bugReports;
+	public void setBaselines(Set<Baseline> baselines) {
+		this.baselines = baselines;
+	}
+	
+	public URL getBugUrl() {
+		return bugUrl;
+	}
+	
+	public void setBugUrl(URL bugUrl) {
+		this.bugUrl = bugUrl;
+	}
+	
+	public boolean isDev() {
+		return isDev;
+	}
+	
+	public void setDev(boolean isDev) {
+		this.isDev = isDev;
+	}
+	
+	public boolean isQa() {
+		return isQa;
+	}
+	
+	public void setQa(boolean isQa) {
+		this.isQa = isQa;
 	}
 	
 	@Temporal(TemporalType.DATE)
@@ -67,4 +85,5 @@ public class Baseline {
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
+
 }
