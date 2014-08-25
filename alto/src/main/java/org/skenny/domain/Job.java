@@ -4,6 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,6 +24,8 @@ public class Job {
 	private Date created;
 	private Date updated;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getJobId() {
 		return jobId;
 	}
@@ -36,6 +42,7 @@ public class Job {
 		this.jobName = jobName;
 	}
 	
+	@ManyToOne(fetch  = FetchType.LAZY)
 	public Owner getOwner() {
 		return owner;
 	}
@@ -44,6 +51,7 @@ public class Job {
 		this.owner = owner;
 	}
 	
+	@OneToOne(fetch = FetchType.LAZY)
 	public Feature getFeature() {
 		return feature;
 	}
@@ -53,7 +61,7 @@ public class Job {
 	}
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	public Suite getSuits() {
+	public Suite getSuite() {
 		return suite;
 	}
 	
@@ -78,7 +86,4 @@ public class Job {
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
-	
-	
-
 }

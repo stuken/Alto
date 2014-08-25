@@ -78,6 +78,7 @@ public class Suite {
 	public void setStderr(String stderr) {
 		this.stderr = stderr;
 	}
+	
 	public double getDuration() {
 		return duration;
 	}
