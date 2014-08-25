@@ -42,6 +42,9 @@
 		<mapping class="org.skenny.domain.SuiteMetaData"/>
 		<mapping class="org.skenny.domain.CaseInfo"/>
 		<mapping class="org.skenny.domain.Baseline"/>
+		<mapping class="org.skenny.domain.Job"/>
+		<mapping class="org.skenny.domain.Owner"/>
+		<mapping class="org.skenny.domain.BugReport"/>
 		
 
 
